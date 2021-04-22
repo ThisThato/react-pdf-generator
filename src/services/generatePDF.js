@@ -18,12 +18,12 @@ const generatePDF = (transactions) => {
   //create table
   doc.autoTable(tableColumn, tableRows, { startY: 20 });
 
-  //file title
+  //fill title
   const date = Date().split(" ");
-  const dateStr = date[0] + date[1] + date[2] + date[3] + date[4];
+  const sDate = date[0] + date[1] + date[2] + date[3] + date[4];
   doc.text("Closed transactions within the last one month", 14, 15);
 
-  doc.save(`report_${dateStr}.pdf`);
+  doc.save(`report_${sDate}.pdf`);
 };
 
 export default generatePDF;

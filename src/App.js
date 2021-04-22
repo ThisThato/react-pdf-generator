@@ -1,4 +1,4 @@
-import "./App.css";
+import "./styles/bootstrap.min.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import TransactionsList from "./components/TransactionsList";
 
