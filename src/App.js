@@ -1,12 +1,14 @@
-import logo from "./logo.svg";
 import "./App.css";
-import Tickets from "./components/Tickets";
+import { BrowserRouter as Router } from "react-router-dom";
+import TransactionsList from "./components/TransactionsList";
 
 function App() {
   return (
-    <div className="App">
-      <Tickets />
-    </div>
+    <Router>
+      <div className="App">
+        <TransactionsList />
+      </div>
+    </Router>
   );
 }
 

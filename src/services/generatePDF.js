@@ -2,17 +2,17 @@ import "jspdf-autotable";
 import { format } from "date-fns";
 import jsPDF from "jspdf";
 
-const generatePDF = (tickets) => {
+const generatePDF = (transactions) => {
   const doc = new jsPDF();
 
-  //   const tableColumn = ["Date", "Category", "Description", "Unit Price", "Qty", "Line Total"];
-  const tableColumn = ["Id", "Title", "Issue", "Status", "Closed on"];
+  const tableColumn = ["ID", "Date", "Category", "Description", "Line Total"];
+  // const tableColumn = ["Id", "Title", "Issue", "Status", "Closed on"];
   const tableRows = [];
 
   //Add data
-  tickets.forEach((ticket) => {
-    const ticketData = [ticket.id, ticket.title, ticket.request, ticket.status, format(new Date(ticket.updated_at), "dd-mm-yyyy")];
-    tableRows.push(ticketData);
+  transactions.forEach((transaction) => {
+    const transactionData = [transaction.id, transaction.updated_at, transaction.category, transaction.description, transaction.lineTotal];
+    tableRows.push(transactionData);
   });
 
   //create table
@@ -21,7 +21,7 @@ const generatePDF = (tickets) => {
   //file title
   const date = Date().split(" ");
   const dateStr = date[0] + date[1] + date[2] + date[3] + date[4];
-  doc.text("Closed tickets within the last one month", 14, 15);
+  doc.text("Closed transactions within the last one month", 14, 15);
 
   doc.save(`report_${dateStr}.pdf`);
 };
